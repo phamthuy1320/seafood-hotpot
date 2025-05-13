@@ -1,3 +1,5 @@
+"use client";
+
 import { Toggle } from "@/components/toggle";
 import { contacts, deliveryMethod } from "@/constants";
 import Image from "next/image";
@@ -8,6 +10,7 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   const onDeliveryChange = () => {};
+  const onMouseEnterCart = () => {};
 
   return (
     <main className="h-full grid grid-rows-[min-content_1fr_auto]">
@@ -21,12 +24,19 @@ export default function Layout({
             height={90}
           />
         </div>
-        <Toggle options={deliveryMethod} onChange={onDeliveryChange} />
+        <Toggle<number>
+          options={deliveryMethod}
+          value={1}
+          onChange={onDeliveryChange}
+        />
         <div>
           <a>Đăng Nhập</a>
           <span>/</span>
           <a>Đăng Ký</a>
         </div>
+        <a href="#cart" onMouseEnter={onMouseEnterCart}>
+          Giỏ hàng
+        </a>
       </header>
       <article className="p-5">{children}</article>
       <footer className="flex flex-col p-5 gap-4 items-center border-t-1 ">
