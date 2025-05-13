@@ -11,3 +11,6 @@ export const contacts = {
   hotline: "tel:0375518575",
   email: ""
 };
+
+const repoName = process.env.NEXT_PUBLIC_REPO_NAME;
+export const baseURL = repoName ? `/${repoName}` : "";

@@ -1,7 +1,7 @@
 "use client";
 
 import { Toggle } from "@/components/toggle";
-import { contacts, deliveryMethod } from "@/constants";
+import { contacts, deliveryMethod, baseURL } from "@/constants";
 import Image from "next/image";
 
 export default function Layout({
@@ -18,7 +18,7 @@ export default function Layout({
         <div className="flex justify-center aspect-square h-22.5 w-80 ">
           <Image
             aria-hidden
-            src="/images/logo.png"
+            src={`${baseURL}/images/logo.png`}
             alt="LOGO"
             width={120}
             height={90}
@@ -43,7 +43,7 @@ export default function Layout({
         <div className="flex justify-center max-h-22.5 max-w-80">
           <Image
             aria-hidden
-            src="/images/logo.png"
+            src={`${baseURL}/images/logo.png`}
             alt="LOGO"
             width={120}
             height={90}
