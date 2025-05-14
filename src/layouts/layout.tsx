@@ -11,6 +11,7 @@ export default function Layout({
 }>) {
   const onDeliveryChange = () => {};
   const onMouseEnterCart = () => {};
+  console.log(process.env.NODE_ENV);
 
   return (
     <main className="h-full grid grid-rows-[min-content_1fr_auto]">
@@ -18,7 +19,7 @@ export default function Layout({
         <div className="flex justify-center aspect-square h-22.5 w-80 ">
           <Image
             aria-hidden
-            src={`${baseURL}/images/logo.png`}
+            src={`${baseURL}/logo.png`}
             alt="LOGO"
             width={120}
             height={90}
@@ -43,7 +44,7 @@ export default function Layout({
         <div className="flex justify-center max-h-22.5 max-w-80">
           <Image
             aria-hidden
-            src={`${baseURL}/images/logo.png`}
+            src={`${baseURL}/logo.png`}
             alt="LOGO"
             width={120}
             height={90}

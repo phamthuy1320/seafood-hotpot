@@ -12,5 +12,5 @@ export const contacts = {
   email: ""
 };
 
-const repoName = process.env.NEXT_PUBLIC_REPO_NAME;
-export const baseURL = repoName ? `/${repoName}` : "";
+export const baseURL =
+  process.env.NODE_ENV === "development" ? "" : "/seafood-hotpot";

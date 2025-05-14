@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Layout from "@/layouts/layout";
-import { baseURL } from "@/constants";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +15,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Seafood Hotpot",
-  description: "Seafood Hotpot Delivery Homepage"
+  description: "Seafood Hotpot Delivery Homepage",
+  assets: "/public",
+  manifest: "manifest.json",
+  icons: {
+    icon: `favicon.ico`
+  }
 };
 
 export default function RootLayout({
@@ -26,7 +30,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link rel={"icon"} href={`${baseURL}/images/favicon.ico`} />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
