@@ -11,6 +11,3 @@ export const contacts = {
   hotline: "tel:0375518575",
   email: ""
 };
-
-export const baseURL =
-  process.env.NODE_ENV === "development" ? "" : "/seafood-hotpot";

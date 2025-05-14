@@ -16,7 +16,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Seafood Hotpot",
   description: "Seafood Hotpot Delivery Homepage",
-  assets: "/public",
   manifest: "manifest.json",
   icons: {
     icon: `favicon.ico`

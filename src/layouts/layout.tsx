@@ -1,7 +1,8 @@
 "use client";
 
+import { logo } from "@/assets/images";
 import { Toggle } from "@/components/toggle";
-import { contacts, deliveryMethod, baseURL } from "@/constants";
+import { contacts, deliveryMethod } from "@/constants";
 import Image from "next/image";
 
 export default function Layout({
@@ -11,19 +12,12 @@ export default function Layout({
 }>) {
   const onDeliveryChange = () => {};
   const onMouseEnterCart = () => {};
-  console.log(process.env.NODE_ENV);
 
   return (
     <main className="h-full grid grid-rows-[min-content_1fr_auto]">
       <header className="sticky top-0 p-5 flex justify-between border-b-1">
         <div className="flex justify-center aspect-square h-22.5 w-80 ">
-          <Image
-            aria-hidden
-            src={`${baseURL}/logo.png`}
-            alt="LOGO"
-            width={120}
-            height={90}
-          />
+          <Image aria-hidden src={logo} alt="LOGO" width={120} height={90} />
         </div>
         <Toggle<number>
           options={deliveryMethod}
@@ -42,13 +36,7 @@ export default function Layout({
       <article className="p-5">{children}</article>
       <footer className="flex flex-col p-5 gap-4 items-center border-t-1 ">
         <div className="flex justify-center max-h-22.5 max-w-80">
-          <Image
-            aria-hidden
-            src={`${baseURL}/logo.png`}
-            alt="LOGO"
-            width={120}
-            height={90}
-          />
+          <Image aria-hidden src={logo} alt="LOGO" width={120} height={90} />
         </div>
         <section>
           <p className="text-center">
