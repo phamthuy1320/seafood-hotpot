@@ -5,6 +5,8 @@ import { Toggle } from "@/components/toggle";
 import { contacts, deliveryMethod } from "@/constants";
 import Image from "next/image";
 
+type BeforeInstallPromptEvent = Event & { prompt: () => void };
+
 export default function Layout({
   children
 }: Readonly<{
@@ -12,6 +14,17 @@ export default function Layout({
 }>) {
   const onDeliveryChange = () => {};
   const onMouseEnterCart = () => {};
+  let deferredPrompt: BeforeInstallPromptEvent | null = null;
+
+  window.addEventListener("beforeinstallprompt", (e) => {
+    //if app can be installed, assign the event to deferred prompt variable
+    deferredPrompt = e as BeforeInstallPromptEvent;
+  });
+
+  const handleClick = () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+  };
 
   return (
     <main className="h-full grid grid-rows-[min-content_1fr_auto]">
@@ -19,6 +32,7 @@ export default function Layout({
         <div className="flex justify-center aspect-square h-22.5 w-80 ">
           <Image aria-hidden src={logo} alt="LOGO" width={120} height={90} />
         </div>
+        <button onClick={handleClick}>Install</button>
         <Toggle<number>
           options={deliveryMethod}
           value={1}
