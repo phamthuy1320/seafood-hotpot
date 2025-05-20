@@ -12,16 +12,19 @@ export function Toggle<T>({
   value,
   onChange = () => {}
 }: ToggleProps<T>) {
-  const handleChange: ChangeEventHandler<HTMLFormElement> = useCallback((e) => {
-    onChange(e.target.value as T);
-  }, []);
+  const handleChange: ChangeEventHandler<HTMLFormElement> = useCallback(
+    (e) => {
+      onChange(e.target.value as T);
+    },
+    [onChange]
+  );
   return (
-    <div>
+    <div className="bg-[#eee] rounded-4xl h-fit p-1">
       <form defaultValue={String(value)} onChange={handleChange}>
         {options.map(({ value: val, label }, index) => (
           <label
             key={index}
-            className="has-checked:bg-red-500 has-checked:text-white"
+            className="has-checked:red-focus has-checked:rounded-4xl py-1 px-2 cursor-pointer"
           >
             <input
               name="toggle"
