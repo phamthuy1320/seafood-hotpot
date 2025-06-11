@@ -1,12 +1,14 @@
 "use client";
 
-import { Toggle } from "@/components/toggle";
+import { Toggle } from "@/components/atoms/toggle";
 import { contacts, deliveryMethod } from "@/constants";
-import { Logo } from "@/components/logo";
+import { Logo } from "@/components/atoms/logo";
 import { LuSquareMenu } from "react-icons/lu";
-import { Menu } from "@/components/menu";
-import { IconButton, useDisclosure } from "@chakra-ui/react";
+import { Menu } from "@/components/molecules/menu";
+import { Box, Flex, IconButton, useDisclosure, Text } from "@chakra-ui/react";
 import { useRef } from "react";
+import { CartPopover } from "@/components/molecules/cartPopover";
+import Link from "next/link";
 
 export default function Layout({
   children
@@ -14,70 +16,84 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   const onDeliveryChange = () => {};
-  const onMouseEnterCart = () => {};
   const { isOpen, onClose, onToggle } = useDisclosure();
   const ref = useRef(null);
 
   return (
-    <main className="h-full grid grid-rows-[min-content_1fr_auto]">
-      <header className="sticky top-0 relative" ref={ref}>
-        <div className={"container p-5 flex gap-10"}>
+    <Box
+      as={"main"}
+      h={"full"}
+      display={"grid"}
+      gridTemplateRows={"min-content 1fr auto"}
+    >
+      <Box as={"header"} position={"sticky"} top={0} ref={ref} bg={"white"}>
+        <Flex p={5} gap={10} justifyContent={"space-between"}>
           <Logo />
-          <div className="invisible lg:visible flex gap-10 flex-1 justify-end">
-            <Toggle<number>
-              options={deliveryMethod}
-              value={1}
-              onChange={onDeliveryChange}
-            />
-            <div>
-              <a>Đăng Nhập</a>
-              <span>/</span>
-              <a>Đăng Ký</a>
-            </div>
-          </div>
+          <Flex
+            gap={10}
+            flex={1}
+            justifyContent={"end"}
+            display={{ base: "none", md: "flex" }}
+          >
+            <Flex flexBasis={"fit-content"}>
+              <Toggle<number>
+                options={deliveryMethod}
+                value={1}
+                onChange={onDeliveryChange}
+              />
+            </Flex>
+            <Box>
+              <Link href={"#sign-in"}>Đăng Nhập</Link>
+              <Text as="span">/</Text>
+              <Link href={"#sign-up"}>Đăng Ký</Link>
+            </Box>
+          </Flex>
 
-          <a href="#cart" onMouseEnter={onMouseEnterCart}>
-            Giỏ hàng
-          </a>
-          <IconButton
-            icon={<LuSquareMenu />}
-            aria-label={"menu"}
-            onClick={onToggle}
-          />
-          <Menu isOpen={isOpen} onClose={onClose} ref={ref} />
-        </div>
-      </header>
-      <article className="p-5">{children}</article>
-      <footer>
-        <div className="flex flex-col p-5 gap-4 items-center container">
+          <CartPopover />
+
+          <Box display={{ md: "none" }}>
+            <IconButton
+              icon={<LuSquareMenu />}
+              aria-label={"menu"}
+              onClick={onToggle}
+            />
+            <Menu isOpen={isOpen} onClose={onClose} ref={ref} />
+          </Box>
+        </Flex>
+      </Box>
+      <Box as={"article"} p={5}>
+        {children}
+      </Box>
+      <Box as="footer">
+        <Box className="flex flex-col p-5 gap-4 items-center container">
           <Logo />
-          <section>
-            <p className="text-center">
-              <strong>Địa chỉ</strong>
-            </p>
-            <p>Số 123, ABC </p>
-          </section>
-          <section>
-            <p className="text-center">
-              <strong>Liên hệ</strong>
-            </p>
-            <nav className="flex gap-4">
-              <a href={contacts.facebook} target="_blank">
+          <Box as="section">
+            <Text className="text-center">
+              <Text as={"strong"}>Địa chỉ</Text>
+            </Text>
+            <Text>Số 123, ABC </Text>
+          </Box>
+          <Box as="section">
+            <Text className="text-center">
+              <Text as="strong">Liên hệ</Text>
+            </Text>
+            <Text as="nav" className="flex gap-4">
+              <Link href={contacts.facebook} target="_blank">
                 Facebook
-              </a>
-              <a href={contacts.zalo} target="_blank">
+              </Link>
+              <Link href={contacts.zalo} target="_blank">
                 Zalo
-              </a>
-              <a href={contacts.hotline} target="_blank">
+              </Link>
+              <Link href={contacts.hotline} target="_blank">
                 Hotline
-              </a>
-              <a href={contacts.email} target="_blank">
+              </Link>
+              <Link href={contacts.email} target="_blank">
                 Email
-              </a>
-            </nav>
-          </section>
-        </div>
-      </footer>
-    </main>
+              </Link>
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 }

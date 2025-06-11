@@ -1,4 +1,4 @@
-import { TextIcon } from "@/components/textIcon";
+import { TextIcon } from "@/components/atoms/textIcon";
 import { TOption } from "@/types/commons";
 import { BsShop } from "react-icons/bs";
 import { GrDeliver } from "react-icons/gr";

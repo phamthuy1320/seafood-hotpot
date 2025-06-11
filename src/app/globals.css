@@ -46,7 +46,6 @@
 @custom-variant white-link {
   &:hover {
     color: inherit;
-    s: underline;
   }
 }
 
