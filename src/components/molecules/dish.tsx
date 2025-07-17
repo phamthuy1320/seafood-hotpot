@@ -1,8 +1,8 @@
 import { Box, Text, Image } from "@chakra-ui/react";
-import NextImage from "next/image";
+import NextImage, { StaticImageData } from "next/image";
 
 export type DishProps = {
-  image?: string;
+  image?: string | StaticImageData;
   name: string;
   describe?: string;
   price: number;
@@ -16,7 +16,7 @@ export const Dish = (props: DishProps) => {
       <Box sx={{ contain: "paint" }}>
         <Image
           as={NextImage}
-          src={image}
+          src={image as string}
           alt={name}
           _hover={{ transform: "rotate(45deg)" }}
         />

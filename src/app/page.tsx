@@ -1,9 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 import { recommendations, category } from "@/mocks";
 import { Box, Divider } from "@chakra-ui/react";
 import pizza from "@/assets/images/temp/pizza.png";
+import comboSale1 from "@/assets/images/temp/combo-sale.png";
+import comboSale2 from "@/assets/images/temp/combo-sale-2.png";
 import { Dish } from "@/components/molecules/dish";
+import { SlideContainer, SlideItem } from "@/components/molecules/Slide";
 
 export default function Home() {
   console.log(recommendations, category);
@@ -18,10 +19,15 @@ export default function Home() {
   return (
     <Box>
       {/* Slides  */}
-      <Box></Box>
+      <SlideContainer>
+        <SlideItem src={comboSale1} />
+        <SlideItem src={comboSale2} />
+        <SlideItem src={comboSale1} />
+        <SlideItem src={comboSale2} />
+      </SlideContainer>
+
       <Divider />
-      <Box hidden>
-        <Dish {...dish} />
+      <Box>
         <Dish {...dish} />
         <Dish {...dish} />
         <Dish {...dish} />
