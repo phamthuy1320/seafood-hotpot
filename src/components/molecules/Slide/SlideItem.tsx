@@ -1,9 +1,9 @@
 import { useRandomColor } from "@/hooks/useRandomColor";
 import { Flex, Box } from "@chakra-ui/react";
-import Image, { ImageProps } from "next/image";
 
-export const SlideItem = (props: Omit<ImageProps, "alt">) => {
+export const SlideItem = (props: { src: string }) => {
   const color = useRandomColor();
+  const { src } = props;
   return (
     <Flex
       minW={"90vw"}
@@ -16,8 +16,15 @@ export const SlideItem = (props: Omit<ImageProps, "alt">) => {
         sx={{ contain: "content" }}
         borderColor={color}
         borderWidth={4}
+        w={"70%"}
+        aspectRatio={2.5}
       >
-        <Image style={{ pointerEvents: "none" }} alt="slide-item" {...props} />
+        <Box
+          backgroundImage={src}
+          h={"full"}
+          w={"full"}
+          backgroundSize={"cover"}
+        />
       </Box>
     </Flex>
   );

@@ -20,10 +20,10 @@ export default function Home() {
     <Box>
       {/* Slides  */}
       <SlideContainer>
-        <SlideItem src={comboSale1} />
-        <SlideItem src={comboSale2} />
-        <SlideItem src={comboSale1} />
-        <SlideItem src={comboSale2} />
+        <SlideItem src={comboSale1.src} />
+        <SlideItem src={comboSale2.src} />
+        <SlideItem src={comboSale1.src} />
+        <SlideItem src={comboSale2.src} />
       </SlideContainer>
 
       <Divider />
