@@ -16,7 +16,7 @@ export const SlideItem = (props: { src: string }) => {
         sx={{ contain: "content" }}
         borderColor={color}
         borderWidth={4}
-        w={"70%"}
+        w={"80%"}
         aspectRatio={2.5}
       >
         <Box

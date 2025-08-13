@@ -27,7 +27,7 @@ export default function Home() {
       </SlideContainer>
 
       <Divider />
-      <Box>
+      <Box maxW={{ md: "80vw" }} mx={"auto"}>
         <Dish {...dish} />
         <Dish {...dish} />
         <Dish {...dish} />

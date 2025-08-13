@@ -20,7 +20,13 @@ export default function Header() {
   const ref = useRef(null);
   return (
     <Box as={"header"} position={"sticky"} zIndex={10} top={0} bg={"white"}>
-      <Flex p={5} gap={10} justifyContent={"space-between"}>
+      <Flex
+        p={5}
+        gap={10}
+        justifyContent={"space-between"}
+        maxW={{ md: "80vw" }}
+        mx="auto"
+      >
         <Logo />
         <Flex
           gap={10}
@@ -53,6 +59,13 @@ export default function Header() {
           <Menu isOpen={isOpen} onClose={onClose} ref={ref} />
         </Box>
       </Flex>
+      <Flex
+        h={10}
+        bg={"primary"}
+        maxW={{ md: "80vw" }}
+        mx={"auto"}
+        borderRadius={40}
+      />
     </Box>
   );
 }
